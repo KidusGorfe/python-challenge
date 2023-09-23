@@ -63,7 +63,17 @@ spacer2 = "----------------------------"
 print(spacer2)
 
 #Winner Announcment 
-winner = "Winner: Diana DeGette "
+if TVcharlie > TVdiana:
+    if TVcharlie > TVray:
+        winner = "Winner: Charles Casper Stockham"
+    else:
+        winner = "Winner: Raymon Anthony Doane"
+else: 
+    if TVdiana > TVray:
+        winner = "Winner: Diana DeGette"
+    else:
+        winner = "Winner: Raymon Anthony Doane"
+
 print(winner)
 #Spacer
 
