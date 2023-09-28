@@ -1,5 +1,3 @@
-import csv
-
 # Specify the file path
 file_path = "C:\\Users\\kidus\\OneDrive\\Documents\\GitHub\\python-challenge\\PyPoll\\Resources\\PyPoll.csv"
 
@@ -9,16 +7,22 @@ TVcharlie, TVdiana, TVray = 0, 0, 0
 
 # Open CSV file and count votes
 with open(file_path, 'r') as file:
-    reader = csv.reader(file)
-    header_row = next(reader)
-   
-    for row in reader:
+    lines = file.readlines()
+    header_row = lines[0]  # Assuming the first line contains the header
+    lines = lines[1:]  # Remove the header line
+    
+    for line in lines:
         voteCount += 1
-        if row[2] == "Charles Casper Stockham":
+        parts = line.strip().split(',')  # Split the line by commas
+
+        # Assuming the structure is Ballot ID, County, Candidate
+        ballot_id, county, candidate_name = parts
+
+        if candidate_name == "Charles Casper Stockham":
             TVcharlie += 1
-        elif row[2] == "Diana DeGette":
+        elif candidate_name == "Diana DeGette":
             TVdiana += 1
-        elif row[2] == "Raymon Anthony Doane":
+        elif candidate_name == "Raymon Anthony Doane":
             TVray += 1
 
 # Header
